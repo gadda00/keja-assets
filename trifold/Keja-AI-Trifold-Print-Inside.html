@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Keja AI — Tri-fold Pamphlet (inside)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<style>
+
+  :root {
+    --bg: #07180F; --bg-soft: #0B2418; --bg-card: #10301F;
+    --cream: #F3EFE2; --muted: #A8B8AC;
+    --accent: #2FD083; --accent-deep: #1E9E62;
+    --gold: #E0B84C; --line: rgba(243, 239, 226, 0.14);
+  }
+  * { box-sizing: border-box; }
+  .panel {
+    width: 374px; height: 794px; position: relative;
+    background: var(--bg); color: var(--cream);
+    font-family: 'Inter', 'Noto Sans SC', 'Carlito', sans-serif;
+  }
+  .panel p, .panel li { text-align: left; }
+  .pan-inner {
+    position: relative; z-index: 2; height: 100%;
+    display: flex; flex-direction: column;
+    padding: 32px 30px 28px;
+  }
+  .kicker {
+    font-family: 'Space Grotesk', 'Inter', sans-serif;
+    font-weight: 600; font-size: 10px; letter-spacing: 0.22em;
+    color: var(--gold); margin: 0 0 12px;
+  }
+  .kicker .kn { color: var(--accent); }
+  .pan-h {
+    font-family: 'Sora', 'Inter', sans-serif; font-weight: 700;
+    font-size: 28px; line-height: 1.22; margin: 0;
+  }
+  .pan-h .gold { color: var(--gold); }
+  .pan-h .accent { color: var(--accent); }
+  .lead { font-size: 12.5px; line-height: 1.62; color: var(--muted); margin: 12px 0 0; }
+  .hairline { height: 1px; background: var(--line); }
+  .ghost {
+    position: absolute; z-index: 1; pointer-events: none;
+    font-family: 'Sora', 'Inter', sans-serif; font-weight: 800;
+    font-size: 190px; line-height: 1; color: rgba(243, 239, 226, 0.04);
+    top: 34px; right: 10px;
+  }
+  .foot-band { margin-top: auto; padding-top: 14px; border-top: 1px solid var(--line); }
+  .foot-line { font-size: 11px; line-height: 1.5; color: var(--muted); }
+  .foot-line strong { font-family: 'Sora', 'Inter', sans-serif; font-weight: 600; font-size: 13.5px; color: var(--gold); display: block; margin-top: 4px; }
+  .mono { font-family: 'Space Grotesk', 'Inter', sans-serif; }
+
+  /* ---------- A3 front cover ---------- */
+  .cover-media { position: absolute; inset: 0; overflow: hidden; z-index: 0; }
+  .cover-media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 30%; display: block; }
+  .cover-grad {
+    position: absolute; inset: 0; z-index: 1;
+    background: linear-gradient(180deg,
+      rgba(7, 24, 15, 0.66) 0%,
+      rgba(7, 24, 15, 0.40) 26%,
+      rgba(7, 24, 15, 0.66) 54%,
+      rgba(7, 24, 15, 0.92) 78%,
+      rgba(7, 24, 15, 0.99) 100%);
+  }
+  .cover-top { display: flex; justify-content: space-between; align-items: center; }
+  .wordmark {
+    font-family: 'Space Grotesk', 'Inter', sans-serif; font-weight: 700;
+    font-size: 17px; letter-spacing: 0.24em; color: var(--gold);
+  }
+  .wordmark .ai { color: var(--accent); }
+  .cover-loc { font-family: 'Space Grotesk', 'Inter', sans-serif; font-weight: 500; font-size: 9.5px; letter-spacing: 0.18em; color: rgba(243, 239, 226, 0.85); }
+  .cover-mid { margin-top: auto; }
+  .cover-kicker {
+    font-family: 'Space Grotesk', 'Inter', sans-serif; font-weight: 600;
+    font-size: 10px; letter-spacing: 0.24em; color: var(--gold); margin: 0 0 18px;
+  }
+  .display {
+    font-family: 'Sora', 'Inter', sans-serif; font-weight: 800;
+    font-size: 43px; line-height: 1.1; letter-spacing: -0.01em;
+    margin: 0; color: var(--cream);
+  }
+  .display .own { color: var(--gold); }
+  .cover-sub { font-size: 13.5px; line-height: 1.55; color: rgba(243, 239, 226, 0.92); margin: 18px 0 0; max-width: 300px; }
+  .cover-bottom { margin-top: 42px; }
+  .cover-bottom .hairline { margin-bottom: 20px; background: rgba(243, 239, 226, 0.22); }
+  .cover-url {
+    font-family: 'Space Grotesk', 'Inter', sans-serif; font-weight: 700;
+    font-size: 25px; color: var(--gold); letter-spacing: 0.02em;
+  }
+  .cover-note {
+    font-family: 'Space Grotesk', 'Inter', sans-serif; font-weight: 500;
+    font-size: 9px; letter-spacing: 0.16em; color: rgba(243, 239, 226, 0.62);
+    margin-top: 8px;
+  }
+
+  /* ---------- A1 flap ---------- */
+  .flap-h { font-family: 'Sora', 'Inter', sans-serif; font-weight: 700; font-size: 26px; line-height: 1.26; margin: 12px 0 0; }
+  .flap-h .gold { color: var(--gold); }
+  .q-list { margin-top: 30px; display: flex; flex-direction: column; gap: 0; }
+  .q-item { display: flex; gap: 14px; align-items: flex-start; padding: 17px 0; border-top: 1px solid var(--line); }
+  .q-item .material-icons { font-size: 21px; color: var(--accent); line-height: 1; margin-top: 2px; }
+  .q-title { font-family: 'Sora', 'Inter', sans-serif; font-weight: 600; font-size: 16.5px; line-height: 1.2; }
+  .q-sub { font-size: 11.5px; line-height: 1.45; color: var(--muted); margin-top: 5px; }
+  .flap-close { font-size: 12.5px; line-height: 1.55; color: var(--muted); margin: 0; }
+  .flap-close strong { color: var(--cream); font-weight: 600; }
+  .open-cue {
+    font-family: 'Space Grotesk', 'Inter', sans-serif; font-weight: 600;
+    font-size: 9.5px; letter-spacing: 0.3em; color: var(--gold); margin-top: 12px;
+  }
+  .anchor-svg { position: absolute; z-index: 1; pointer-events: none; }
+
+  /* ---------- A2 back cover ---------- */
+  .back-inner { align-items: center; text-align: center; }
+  .back-inner .kicker { letter-spacing: 0.3em; }
+  .back-word { font-family: 'Space Grotesk', 'Inter', sans-serif; font-weight: 700; font-size: 20px; letter-spacing: 0.3em; color: var(--gold); margin: 4px 0 14px; }
+  .back-word .ai { color: var(--accent); }
+  .rule-accent { height: 3px; width: 44px; background: var(--accent); border-radius: 2px; margin: 0 auto; }
+  .back-h { font-family: 'Sora', 'Inter', sans-serif; font-weight: 600; font-size: 19.5px; line-height: 1.34; margin: 16px 0 0; color: var(--cream); }
+  .back-body { font-size: 12.5px; line-height: 1.66; color: var(--muted); margin: 14px 0 0; max-width: 286px; }
+  .qr-card {
+    margin: 26px auto 0; width: 178px; background: #FCFBF7;
+    border-radius: 14px; padding: 13px 13px 12px; text-align: center;
+    box-shadow: 0 14px 34px rgba(0, 0, 0, 0.4);
+  }
+  .qr-card img { width: 140px; height: 140px; display: block; margin: 0 auto; }
+  .qr-cap { font-family: 'Space Grotesk', 'Inter', sans-serif; font-weight: 600; font-size: 9px; letter-spacing: 0.22em; color: #4A5B50; margin-top: 10px; }
+  .qr-url { font-family: 'Space Grotesk', 'Inter', sans-serif; font-weight: 700; font-size: 16px; color: #07180F; margin-top: 3px; }
+  .swahili { font-size: 11px; font-style: italic; color: var(--muted); margin: 22px 0 0; }
+  .swahili b { color: var(--cream); font-weight: 600; font-style: normal; }
+  .back-foot {
+    margin-top: auto; padding-top: 14px; border-top: 1px solid var(--line);
+    display: flex; justify-content: space-between; width: 100%;
+  }
+  .back-foot div { font-family: 'Space Grotesk', 'Inter', sans-serif; font-weight: 500; font-size: 9px; letter-spacing: 0.14em; color: var(--muted); }
+
+  /* ---------- B1 problem ---------- */
+  .prob-list { margin-top: 20px; }
+  .prob-row { display: flex; gap: 12px; align-items: flex-start; padding: 13.5px 0; border-top: 1px solid var(--line); }
+  .prob-num { font-family: 'Space Grotesk', 'Inter', sans-serif; font-weight: 600; font-size: 10px; color: var(--gold); padding-top: 4px; }
+
+  /* ---------- B2 score ---------- */
+  .ring-wrap { position: relative; width: 216px; height: 216px; margin: 22px auto 0; }
+  .ring-center { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+  .ring-num { font-family: 'Space Grotesk', 'Inter', sans-serif; font-weight: 700; font-size: 52px; line-height: 1; color: var(--cream); }
+  .ring-cap { font-family: 'Space Grotesk', 'Inter', sans-serif; font-weight: 600; font-size: 10.5px; letter-spacing: 0.34em; color: var(--gold); margin-top: 7px; }
+  .ring-scale { font-family: 'Space Grotesk', 'Inter', sans-serif; font-weight: 500; font-size: 8px; letter-spacing: 0.2em; color: var(--muted); margin-top: 4px; }
+  .dims { margin-top: 20px; display: grid; grid-template-columns: 1fr 1fr; column-gap: 18px; }
+  .dim { display: flex; gap: 8px; align-items: baseline; padding: 8.5px 0; border-top: 1px solid var(--line); }
+  .dim .dn { font-family: 'Space Grotesk', 'Inter', sans-serif; font-weight: 600; font-size: 9px; color: var(--gold); }
+  .dim .dt { font-size: 11px; font-weight: 500; line-height: 1.3; color: var(--cream); overflow-wrap: break-word; }
+  .dim-note { grid-column: 1 / -1; font-size: 10px; color: var(--muted); padding: 9px 0 0; border-top: 1px solid var(--line); letter-spacing: 0.02em; }
+
+  /* ---------- B3 passport ---------- */
+  .passport {
+    margin-top: 18px; border: 1px solid rgba(224, 184, 76, 0.45); border-radius: 12px;
+    background: linear-gradient(165deg, rgba(16, 48, 31, 0.94), rgba(11, 36, 24, 0.9));
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.38);
+  }
+  .pass-head {
+    display: flex; justify-content: space-between; align-items: center;
+    background: rgba(224, 184, 76, 0.1); border-bottom: 1px solid rgba(224, 184, 76, 0.3);
+    border-radius: 11px 11px 0 0; padding: 10px 14px;
+  }
+  .pass-title { font-family: 'Space Grotesk', 'Inter', sans-serif; font-weight: 700; font-size: 10.5px; letter-spacing: 0.14em; color: var(--gold); }
+  .pass-id { font-family: 'Space Grotesk', 'Inter', sans-serif; font-weight: 500; font-size: 8.5px; letter-spacing: 0.1em; color: var(--muted); }
+  .pass-body { padding: 13px 14px 12px; }
+  .pass-subject { font-family: 'Sora', 'Inter', sans-serif; font-weight: 600; font-size: 13.5px; line-height: 1.3; }
+  .pass-asking { font-family: 'Space Grotesk', 'Inter', sans-serif; font-weight: 600; font-size: 11px; color: var(--gold); margin-top: 4px; letter-spacing: 0.06em; }
+  .pass-chips { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 10px; max-width: 100%; }
+  .pass-chip {
+    display: inline-flex; align-items: center; gap: 4px;
+    border: 1px solid rgba(47, 208, 131, 0.45); border-radius: 999px;
+    background: rgba(47, 208, 131, 0.08); color: var(--accent);
+    font-family: 'Space Grotesk', 'Inter', sans-serif; font-weight: 600;
+    font-size: 9px; letter-spacing: 0.1em; padding: 3.5px 9px;
+  }
+  .pass-chip .material-icons { font-size: 10px; }
+  .pass-rows { margin-top: 12px; }
+  .pass-row { display: flex; justify-content: space-between; align-items: baseline; padding: 7.5px 0; border-top: 1px solid var(--line); gap: 10px; }
+  .pass-k { font-family: 'Space Grotesk', 'Inter', sans-serif; font-weight: 500; font-size: 9px; letter-spacing: 0.12em; color: var(--muted); flex-shrink: 0; }
+  .pass-v { font-family: 'Space Grotesk', 'Inter', sans-serif; font-weight: 600; font-size: 12.5px; color: var(--cream); text-align: right; overflow-wrap: break-word; }
+  .pass-v .ok { color: var(--accent); }
+  .pass-code { margin-top: 11px; }
+  .barcode { height: 22px; background: repeating-linear-gradient(90deg, rgba(243, 239, 226, 0.75) 0 2px, transparent 2px 5px, rgba(243, 239, 226, 0.75) 5px 6px, transparent 6px 10px, rgba(243, 239, 226, 0.75) 10px 13px, transparent 13px 17px); opacity: 0.5; }
+  .pass-code-cap { font-family: 'Space Grotesk', 'Inter', sans-serif; font-weight: 500; font-size: 8px; letter-spacing: 0.28em; color: var(--muted); margin-top: 5px; }
+  .fw { margin-top: 16px; }
+  .fw-label { font-family: 'Space Grotesk', 'Inter', sans-serif; font-weight: 600; font-size: 9px; letter-spacing: 0.24em; color: var(--gold); }
+  .fw-steps { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; max-width: 100%; }
+  .fw-step {
+    font-family: 'Space Grotesk', 'Inter', sans-serif; font-weight: 600; font-size: 9px;
+    letter-spacing: 0.08em; color: var(--cream); border: 1px solid rgba(47, 208, 131, 0.4);
+    background: rgba(47, 208, 131, 0.07); border-radius: 7px; padding: 4.5px 8px;
+  }
+  .moat { font-size: 11px; line-height: 1.55; color: var(--muted); margin: 13px 0 0; }
+  .moat b { color: var(--cream); font-weight: 600; }
+  .cta { margin-top: auto; padding-top: 16px; border-top: 2px solid rgba(224, 184, 76, 0.5); }
+  .cta-eyebrow { font-family: 'Space Grotesk', 'Inter', sans-serif; font-weight: 600; font-size: 9px; letter-spacing: 0.3em; color: var(--accent); }
+  .cta-url { font-family: 'Space Grotesk', 'Inter', sans-serif; font-weight: 700; font-size: 32px; line-height: 1.1; color: var(--gold); margin-top: 8px; }
+  .cta-line { font-size: 11.5px; color: rgba(243, 239, 226, 0.9); margin: 7px 0 0; }
+
+
+  html, body { margin: 0; padding: 0; background: #07180F; }
+  .poster { width: 1122px; height: 794px; position: relative; background: #07180F; }
+  .panels { display: flex; }
+  .fold-line { position: absolute; top: 0; bottom: 0; width: 1px; background: rgba(243, 239, 226, 0.10); z-index: 6; }
+  @page { size: 1122px 794px; margin: 0; }
+  @media screen {
+    html { background: #07180F; }
+    body { transform-origin: top center; scale: min(1, calc(100vw / 1122)); margin: 0 auto; }
+  }
+
+</style>
+</head>
+<body>
+<div class="poster">
+  <div class="panels">
+
+  <div class="panel in1">
+    <div class="ghost">01</div>
+    <div class="pan-inner">
+      <div class="kicker"><span class="kn">01</span> &mdash; THE PROBLEM</div>
+      <h2 class="pan-h">Not a listing problem.<br><span class="accent">An intelligence problem.</span></h2>
+      <p class="lead">Africa doesn&rsquo;t lack property portals. It lacks the truth around them &mdash; before money moves.</p>
+      <div class="prob-list">
+        <div class="prob-row">
+          <div class="prob-num">01</div>
+          <div>
+            <div class="q-title">Is this listing real?</div>
+            <div class="q-sub">Duplicates and ghost sellers are routine.</div>
+          </div>
+        </div>
+        <div class="prob-row">
+          <div class="prob-num">02</div>
+          <div>
+            <div class="q-title">Is the seller verified?</div>
+            <div class="q-sub">Owners and agents are rarely identity-checked.</div>
+          </div>
+        </div>
+        <div class="prob-row">
+          <div class="prob-num">03</div>
+          <div>
+            <div class="q-title">Is the price fair?</div>
+            <div class="q-sub">No comparable sales. Just asking prices.</div>
+          </div>
+        </div>
+        <div class="prob-row">
+          <div class="prob-num">04</div>
+          <div>
+            <div class="q-title">What will it earn?</div>
+            <div class="q-sub">Rental demand and yield are guesswork.</div>
+          </div>
+        </div>
+        <div class="prob-row">
+          <div class="prob-num">05</div>
+          <div>
+            <div class="q-title">Will it be delivered?</div>
+            <div class="q-sub">Developer track records stay invisible.</div>
+          </div>
+        </div>
+        <div class="prob-row">
+          <div class="prob-num">06</div>
+          <div>
+            <div class="q-title">Is the deal safe?</div>
+            <div class="q-sub">Titles, documents and payments go unchecked.</div>
+          </div>
+        </div>
+      </div>
+      <div class="foot-band">
+        <div class="foot-line">Every question on this panel is answerable.<strong>That is the business.</strong></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel in2">
+    <div class="pan-inner">
+      <div class="kicker"><span class="kn">02</span> &mdash; THE SOLUTION</div>
+      <h2 class="pan-h">The Keja Property <span class="gold">Intelligence Score.</span></h2>
+      <div class="ring-wrap">
+
+      <svg width="216" height="216" viewBox="0 0 216 216" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="108" cy="108" r="88" stroke="rgba(243,239,226,0.10)" stroke-width="10"/>
+        <circle cx="108" cy="108" r="88" stroke="#E0B84C" stroke-width="10"
+          stroke-linecap="round" stroke-dasharray="481.0 552.9"
+          transform="rotate(-90 108 108)"/>
+        <line x1="108.0" y1="9.0" x2="108.0" y2="4.0" stroke="#E0B84C" stroke-width="1.4" opacity="0.55"/>
+      <line x1="161.5" y1="24.7" x2="164.2" y2="20.5" stroke="#E0B84C" stroke-width="1.4" opacity="0.55"/>
+      <line x1="198.1" y1="66.9" x2="202.6" y2="64.8" stroke="#E0B84C" stroke-width="1.4" opacity="0.28"/>
+      <line x1="206.0" y1="122.1" x2="210.9" y2="122.8" stroke="#E0B84C" stroke-width="1.4" opacity="0.28"/>
+      <line x1="182.8" y1="172.8" x2="186.6" y2="176.1" stroke="#E0B84C" stroke-width="1.4" opacity="0.28"/>
+      <line x1="135.9" y1="203.0" x2="137.3" y2="207.8" stroke="#E0B84C" stroke-width="1.4" opacity="0.28"/>
+      <line x1="80.1" y1="203.0" x2="78.7" y2="207.8" stroke="#E0B84C" stroke-width="1.4" opacity="0.28"/>
+      <line x1="33.2" y1="172.8" x2="29.4" y2="176.1" stroke="#E0B84C" stroke-width="1.4" opacity="0.28"/>
+      <line x1="10.0" y1="122.1" x2="5.1" y2="122.8" stroke="#E0B84C" stroke-width="1.4" opacity="0.28"/>
+      <line x1="17.9" y1="66.9" x2="13.4" y2="64.8" stroke="#E0B84C" stroke-width="1.4" opacity="0.28"/>
+      <line x1="54.5" y1="24.7" x2="51.8" y2="20.5" stroke="#E0B84C" stroke-width="1.4" opacity="0.28"/>
+        <circle cx="108" cy="108" r="72" stroke="rgba(243,239,226,0.07)" stroke-width="1"/>
+      </svg>
+        <div class="ring-center">
+          <div class="ring-num">87</div>
+          <div class="ring-cap">KPIS</div>
+          <div class="ring-scale">OUT OF 100</div>
+        </div>
+      </div>
+      <p class="lead" style="margin-top:22px; text-align:center;">One number for every property &mdash; computed from <b style="color:var(--cream); font-weight:600;">11 dimensions</b> of verified intelligence:</p>
+      <div class="dims">
+          <div class="dim"><span class="dn">1</span><span class="dt">Identity verification</span></div>
+          <div class="dim"><span class="dn">2</span><span class="dt">Location confidence</span></div>
+          <div class="dim"><span class="dn">3</span><span class="dt">Price benchmark</span></div>
+          <div class="dim"><span class="dn">4</span><span class="dt">Rental demand</span></div>
+          <div class="dim"><span class="dn">5</span><span class="dt">Rental economics</span></div>
+          <div class="dim"><span class="dn">6</span><span class="dt">Developer record</span></div>
+          <div class="dim"><span class="dn">7</span><span class="dt">Completion status</span></div>
+          <div class="dim"><span class="dn">8</span><span class="dt">Amenities &amp; infrastructure</span></div>
+          <div class="dim"><span class="dn">9</span><span class="dt">Market indicators</span></div>
+          <div class="dim"><span class="dn">10</span><span class="dt">Liquidity</span></div>
+          <div class="dim"><span class="dn">11</span><span class="dt">Data confidence</span></div>
+        <div class="dim-note">EVERY DIMENSION SOURCED &middot; WEIGHTED &middot; SCORED &middot; LIVE</div>
+      </div>
+      <div class="foot-band">
+        <div class="foot-line">A KSh 25M decision should <strong>never be a guess.</strong></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel in3">
+    <div class="pan-inner">
+      <div class="kicker"><span class="kn">03</span> &mdash; THE PRODUCT</div>
+      <h2 class="pan-h">Every property gets a <span class="gold">Passport.</span></h2>
+      <div class="passport">
+        <div class="pass-head">
+          <div class="pass-title">KEJA PROPERTY PASSPORT</div>
+          <div class="pass-id">KE-25-0119</div>
+        </div>
+        <div class="pass-body">
+          <div class="pass-subject">3-Bedroom Apartment &middot; Westlands</div>
+          <div class="pass-asking">ASKING KSH 25M</div>
+          <div class="pass-chips">
+            <span class="pass-chip"><i class="material-icons">verified</i>TITLE VERIFIED</span>
+            <span class="pass-chip"><i class="material-icons">verified</i>SELLER VERIFIED</span>
+          </div>
+          <div class="pass-rows">
+            <div class="pass-row"><span class="pass-k">PRICE VS AREA</span><span class="pass-v"><span class="ok">FAIR</span> &middot; +2% VS COMPS</span></div>
+            <div class="pass-row"><span class="pass-k">EST. RENT</span><span class="pass-v">KSH 180K / MONTH</span></div>
+            <div class="pass-row"><span class="pass-k">GROSS YIELD</span><span class="pass-v">8.6% PER YEAR</span></div>
+            <div class="pass-row"><span class="pass-k">KPIS</span><span class="pass-v">87 &middot; TOP 12% OF AREA</span></div>
+            <div class="pass-row"><span class="pass-k">DEVELOPER</span><span class="pass-v">14 OF 15 DELIVERED</span></div>
+          </div>
+          <div class="pass-code">
+            <div class="barcode"></div>
+            <div class="pass-code-cap">KE-07-NBO-WSTL-3BR-0119</div>
+          </div>
+        </div>
+      </div>
+      <div class="fw">
+        <div class="fw-label">THE DATA NETWORK</div>
+        <div class="fw-steps">
+          <span class="fw-step">SEARCH</span>
+          <span class="fw-step">INQUIRY</span>
+          <span class="fw-step">VIEWING</span>
+          <span class="fw-step">OFFER</span>
+          <span class="fw-step">RESERVATION</span>
+          <span class="fw-step">TRANSACTION</span>
+          <span class="fw-step">OUTCOME</span>
+        </div>
+      </div>
+      <p class="moat">Every transaction compounds the intelligence &mdash; <b>the more Africa deals, the smarter Keja AI gets.</b></p>
+      <div class="cta">
+        <div class="cta-eyebrow">UNDERSTAND &middot; VERIFY &middot; TRANSACT</div>
+        <div class="cta-url">keja.app</div>
+        <p class="cta-line">From first search to signed deal.</p>
+      </div>
+    </div>
+  </div>
+  </div>
+  <div class="fold-line" style="left: 374px;"></div>
+  <div class="fold-line" style="left: 748px;"></div>
+</div>
+</body>
+</html>
